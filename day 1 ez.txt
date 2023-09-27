@@ -1,0 +1,40 @@
+//get one number as input find the sum of number of digits in that number using for and while loop
+#include<stdio.h>
+int main()
+{
+	int num,sum=0,rem;
+	printf("enter the number");
+	scanf("%d",&num);
+	while(num>0)
+	{
+		rem=num%10;
+		sum=sum+rem;
+		num=num/10;
+	}
+	printf("sum: %d\n", sum);
+	return 0;
+}
+
+//using for loop
+number = int(input("Enter a number: "))
+number_str = str(number)
+sum_of_digits = 0
+for digit_str in number_str:
+    digit = int(digit_str)  # Convert the digit back to an integer
+    sum_of_digits += digit  # Add the digit to the sum
+print("Sum of digits:", sum_of_digits)
+
+//time complexity
+#include<stdio.h>
+int main()
+{
+	int i,n=5;
+	for(i=0;i<n;i++)
+	{
+		printf("%d\n",i);
+    }
+	printf("%d",i);
+}
+
+
+
