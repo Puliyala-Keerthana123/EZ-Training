@@ -1,0 +1,253 @@
+Primitive datatypes:declaration is mandatory languages support primitive datatype are c and java
+memory is stored as stack and heap
+time complexity
+for(i=0;i<n;i++)....O(n)
+for(i=0;i<n;i+2)....O(n)
+for(i=0;i>1;i--)....O(n)
+for(i=1;i<n;i=i*2)....O(lognbase2)
+for(i=1;i<n;i=i*3)....O(lognbase3)
+for(i=n;i>1;i=i/2)....O(lognbase2)
+Names of time complexity:
+constant time complexity-O(1)
+linear time complexity-O(n)
+logarithemic time complexity-O(log n)
+quadratic time complexity-O(n^2)
+exponential time complexity-O(2^n)
+Space complexity:space complexity is parallel to time complexity
+Names of space complexity:
+constant space complexity-O(n)
+polynomial space complexity-O(n^2)
+loglinear soace complexityO(log n)
+
+
+//create 1 dimensional array, find sum of array elements in the array using function
+#include<stdio.h>
+int main()
+{
+	int a[100],i,n,sum;
+	printf("enter n value");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	sum=sumofarray(a,n);
+	printf("sum of array is :%d",sum);
+}
+int sumofarray(int a[],int n)
+{
+	int sum=0,i;
+	for(i=0;i<n;i++)
+	{
+		sum+=a[i];
+	}
+	return sum;
+}
+
+
+//linear search
+#include<stdio.h>
+  
+int main()
+{
+    int a[20],i,x,n;
+    printf("How many elements?");
+    scanf("%d",&n);
+     
+    printf("Enter array elements:n");
+    for(i=0;i<n;++i)
+        scanf("%d",&a[i]);
+     
+    printf("nEnter element to search:");
+    scanf("%d",&x);
+     
+    for(i=0;i<n;++i)
+        if(a[i]==x)
+            break;
+     
+    if(i<n)
+        printf("Element found at index %d",i);
+    else
+        printf("Element not found");
+  
+    return 0;
+}
+
+
+//2double 1char 2 samedatatypes irrespective of place spreading equally
+//int double char any place ,cid 16,icd 16 ,dic 16,dci 16,cdi 24=8+1+7+4+4
+#include<stdio.h>
+struct a{
+	int x;
+	char y;
+    double z;
+};
+int main()
+{
+	struct a yes;
+	printf("%d",sizeof(yes));
+	return 0;
+}
+
+
+//space complexity in terms of recurssion
+//sum of n numbers
+#include <stdio.h>
+
+// Recursive function to find the sum of the first n natural numbers
+int sumOfN(int n) {
+    if (n == 1) {
+        return 1; // Base case: The sum of 1 is 1
+    } else {
+        return n + sumOfN(n - 1); // Recursive case: Add n to the sum of the first (n-1) numbers
+    }
+}
+
+int main() {
+    int n;
+
+    printf("Enter a positive integer n: ");
+    scanf("%d", &n);
+
+    if (n < 1) {
+        printf("Please enter a positive integer.\n");
+        return 1; // Return an error code
+    }
+
+    int sum = sumOfN(n);
+    printf("Sum of the first %d natural numbers is %d.\n", n, sum);
+
+    return 0;
+}
+
+
+//factorial of a number using recursion
+#include <stdio.h>
+
+// Recursive function to calculate factorial
+unsigned long long factorial(int n) {
+    if (n == 0) {
+        // Base case: 0! = 1
+        return 1;
+    } else {
+        // Recursive case: n! = n * (n-1)!
+        return (unsigned long long)n * factorial(n - 1);
+    }
+}
+
+int main() {
+    int num;
+    printf("Enter a non-negative integer: ");
+    scanf("%d", &num);
+
+    if (num < 0) {
+        printf("Factorial is not defined for negative numbers.\n");
+    } else {
+        unsigned long long result = factorial(num);
+        printf("Factorial of %d = %llu\n", num, result);
+    }
+
+    return 0;
+}
+
+
+//0 1 1 2 3 5 
+#include <stdio.h>
+
+// Function to calculate the nth Fibonacci number using recursion
+int i;
+int fibonacci(int n) {
+    if (n <= 1) {
+        return n;
+    } else {
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+}
+
+// Function to print the Fibonacci series up to n terms using recursion
+void printFibonacciSeries(int n) {
+    printf("Fibonacci series up to %d terms:\n", n);
+    for (i = 0; i < n; i++) {
+        printf("%d ", fibonacci(i));
+    }
+    printf("\n");
+}
+
+int main() {
+    int n;
+
+    printf("Enter the number of terms in the Fibonacci series: ");
+    scanf("%d", &n);
+
+    if (n < 1) {
+        printf("Please enter a positive integer.\n");
+        return 1; // Return an error code
+    }
+
+    printFibonacciSeries(n);
+
+    return 0;
+}
+
+
+''' nested lists'''
+def generate_lists_of_lists(n):
+    table_list = []
+    for num in range(n):
+        row = []
+        for i in range(n):
+            row.append(i)
+        table_list.append(row)
+    return table_list
+
+print(generate_lists_of_lists(15''''))
+
+
+
+#include <stdio.h>
+
+// Function to reverse a matrix by reversing its rows
+void reverseMatrix(int mat[][3], int rows, int cols) {
+    for (int i = 0; i < rows / 2; i++) {
+        for (int j = 0; j < cols; j++) {
+            // Swap the elements of the current row with the corresponding element in the last row
+            int temp = mat[i][j];
+            mat[i][j] = mat[rows - 1 - i][j];
+            mat[rows - 1 - i][j] = temp;
+        }
+    }
+}
+
+// Function to print a matrix
+void printMatrix(int mat[][3], int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int rows = 3;
+    int cols = 3;
+    int matrix[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    printf("Original Matrix:\n");
+    printMatrix(matrix, rows, cols);
+
+    // Reverse the matrix
+    reverseMatrix(matrix, rows, cols);
+
+    printf("\nReversed Matrix:\n");
+    printMatrix(matrix, rows, cols);
+
+    return 0;
+}
+
+
+
