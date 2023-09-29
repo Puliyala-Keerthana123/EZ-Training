@@ -1,0 +1,138 @@
+BITWISE OPERATORS:
+
+
+
+def find_smallest_missing_positive(nums):
+    # Filter positive integers
+    positive_nums = [num for num in nums if num > 0]
+    
+    # Create a set from positive integers
+    num_set = set(positive_nums)
+    
+    # Iterate through positive integers starting from 1
+    smallest_missing = 1
+    while smallest_missing in num_set:
+        smallest_missing += 1
+    
+    return smallest_missing
+
+# Example usage:
+nums = [3, 1, -5, -6, 0, 4]
+result = find_smallest_missing_positive(nums)
+print(result)  # Output: 2
+
+#include <stdio.h>
+
+// Function to swap two integers
+void swap(int *a, int *b) {
+    int temp = *a;
+    int i;
+    *a = *b;
+    *b = temp;
+}
+
+// Function to find the smallest missing positive integer
+int findSmallestMissingPositive(int nums[], int length) {
+    // First, move all positive integers to the front of the array
+    int positiveIndex = 0;
+    int i;
+    for (i = 0; i < length; i++) {
+        if (nums[i] > 0) {
+            swap(&nums[i], &nums[positiveIndex]);
+            positiveIndex++;
+        }
+    }
+    
+    // Iterate through the positive integers and mark their presence
+    for (i = 0; i < positiveIndex; i++) {
+        int num = abs(nums[i]);
+        if (num <= positiveIndex) {
+            nums[num - 1] = -abs(nums[num - 1]);
+        }
+    }
+    
+    // Find the first positive index that is not marked
+    for (i = 0; i < positiveIndex; i++) {
+        if (nums[i] > 0) {
+            return i + 1;
+        }
+    }
+    
+    // If all positive integers are present, return the next positive integer
+    return positiveIndex + 1;
+}
+
+int main() {
+    int nums[] = {3, 1, -5, -6, 0, 4};
+    int length = sizeof(nums) / sizeof(nums[0]);
+    int result = findSmallestMissingPositive(nums, length);
+    printf("The smallest missing positive integer is: %d\n", result);  // Output: 2
+    
+    return 0;
+}
+
+
+'''in a given array every number occurs twice only 1 number occurs 1time find the number that occurs 1 time'''
+def findSingle( ar,n):
+    res=ar[0]
+    for i in range(1,n):
+        res=res^ar[i]
+    return res
+ar=[2, 3, 5, 4, 5, 3, 4, 2,88]
+print(findSingle(ar,len(ar)))
+
+
+'''swapping 2numbers using XOR
+a=100
+b=200
+print("a:",a,"b:",b)
+a=a^b
+b=a^b
+a=a^b
+
+print("a:",a,"b:",b)
+
+
+'''For the given number find out Xor of all numbers'''
+n=12
+Xor=0
+for i in range(1,n+1):
+    Xor=Xor^i
+print(Xor)
+
+'''for given number check odd or even number'''
+n=13
+if(n&1==0):
+  print("even")
+else:
+  print("odd")
+
+
+without python inbuilt function
+#python
+b=input()
+a=[int(x) for x in b.split(" ")]
+print(a)
+for i in range(len(a)):
+    if i not in a:
+        print(i)
+        break;
+
+
+
+'''tower of hanoi'''
+def tower_of_hanoi(n, source, auxiliary, target):
+    if n == 1:
+        print(f"Move disk 1 from {source} to {target}")
+        return
+    tower_of_hanoi(n - 1, source, target, auxiliary)
+    print(f"Move disk {n} from {source} to {target}")
+    tower_of_hanoi(n - 1, auxiliary, source, target)
+
+if __name__ == "__main__":
+    n = int(input("Enter the number of disks: "))
+    tower_of_hanoi(n, 'A', 'B', 'C')
+
+
+
+
